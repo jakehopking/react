@@ -1,0 +1,26 @@
+{
+  "streams": [
+    {
+      "title": "Jake's iPad",
+      "description": "Jake's iPad pro stream!",
+      "id": 2
+    },
+    {
+      "title": "Refactored stream",
+      "description": "This has been edited again",
+      "id": 5
+    },
+    {
+      "title": "A new stream",
+      "description": "A new stream. Updated.",
+      "userId": "105938556898757191350",
+      "id": 6
+    },
+    {
+      "title": "A brand new stream",
+      "description": "A brand new stream is here. Updated.",
+      "userId": "105938556898757191350",
+      "id": 7
+    }
+  ]
+}
