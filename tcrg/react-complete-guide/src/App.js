@@ -1,5 +1,4 @@
 import React from 'react';
-import Radium, { StyleRoot } from 'radium';
 import './App.css';
 import Person from './Person/Person'
 
@@ -46,21 +45,19 @@ class App extends React.Component {
   personListFunction = () => {
     if (this.state.showPersonsList) {
       return (
-        <StyleRoot>
-          <div className="personList">
-            {this.state.persons.map((person, index) => {
-              return (
-                <Person 
-                  click={() => this.deletePersonHandler(index)} 
-                  name={person.name} 
-                  age={person.age} 
-                  key={person.id}
-                  changed={(e) => this.nameChangedHandler(e, person.id)}>
-                </Person>
-              );
-            })}
-          </div>
-        </StyleRoot>
+        <div className="personList">
+          {this.state.persons.map((person, index) => {
+            return (
+              <Person 
+                click={() => this.deletePersonHandler(index)} 
+                name={person.name} 
+                age={person.age} 
+                key={person.id}
+                changed={(e) => this.nameChangedHandler(e, person.id)}>
+              </Person>
+            );
+          })}
+        </div>
       );
     }
   };
@@ -71,17 +68,9 @@ class App extends React.Component {
       color: 'white',
       padding: '10px',
       cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
     };
     if (this.state.showPersonsList) {
       style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'pink',
-        color: 'black'
-      };
     }
 
     let classes = [];
@@ -106,4 +95,4 @@ class App extends React.Component {
   }
 }
 
-export default Radium(App);
+export default App;
