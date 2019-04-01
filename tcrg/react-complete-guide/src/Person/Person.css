@@ -4,3 +4,11 @@
   margin: 10px auto;
   box-shadow: 0 2px 3px #ccc;
 }
+
+.red {
+  color: red;
+}
+
+.strike {
+  text-decoration: line-through;
+}

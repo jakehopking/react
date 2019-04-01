@@ -64,15 +64,26 @@ class App extends React.Component {
 
   render() {
     const style = {
-      backgroundColor: 'blue',
+      backgroundColor: 'green',
       color: 'white',
       padding: '10px',
       cursor: 'pointer'
     };
+    if (this.state.showPersonsList) {
+      style.backgroundColor = 'red';
+    }
+
+    let classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('strike');
+    }
 
     return (
       <div className="App">
-        <h1>I'm Reactive!</h1>
+        <h1 className={classes.join(' ')}>I'm Reactive!</h1>
         <button 
           style={style}
           onClick={this.togglePersonsHandler}>
