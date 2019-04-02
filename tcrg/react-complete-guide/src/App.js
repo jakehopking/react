@@ -1,6 +1,7 @@
 import React from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person'
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends React.Component {
   state = { 
@@ -48,13 +49,14 @@ class App extends React.Component {
         <div className="personList">
           {this.state.persons.map((person, index) => {
             return (
-              <Person 
-                click={() => this.deletePersonHandler(index)} 
-                name={person.name} 
-                age={person.age} 
-                key={person.id}
-                changed={(e) => this.nameChangedHandler(e, person.id)}>
-              </Person>
+              <ErrorBoundary key={person.id}>
+                <Person 
+                  click={() => this.deletePersonHandler(index)} 
+                  name={person.name} 
+                  age={person.age} 
+                  changed={(e) => this.nameChangedHandler(e, person.id)}>
+                </Person>
+              </ErrorBoundary>
             );
           })}
         </div>
@@ -63,29 +65,30 @@ class App extends React.Component {
   };
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      padding: '10px',
-      cursor: 'pointer',
-    };
-    if (this.state.showPersonsList) {
-      style.backgroundColor = 'red';
-    }
+    
+    let assignedClasses = [];
+    let buttonClass = '';
 
-    let classes = [];
     if (this.state.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push( classes.red );
     }
     if (this.state.persons.length <= 1) {
-      classes.push('strike');
+      assignedClasses.push( classes.uppercase );
+    }
+    if (this.state.showPersonsList) {
+      buttonClass = classes.red;
+    }
+    
+    const random = Math.random();
+
+    if (random > 0.7) {
+      throw new Error('Something went wrong');
     }
 
     return (
-      <div className="App">
-        <h1 className={classes.join(' ')}>I'm Reactive!</h1>
-        <button 
-          style={style}
+      <div className={classes.App}>
+        <h1 className={assignedClasses.join( ' ' )}>I'm Reactive!</h1>
+        <button className={buttonClass}
           onClick={this.togglePersonsHandler}>
           Toggle persons
         </button>
