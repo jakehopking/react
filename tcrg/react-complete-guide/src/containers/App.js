@@ -1,9 +1,15 @@
 import React from 'react';
 import classes from './App.css';
-import Person from './Person/Person'
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
+// import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log('App.js: Constructor');
+  }
+
   state = { 
     persons: [
       { id: 0, name: 'Jake', age: 37 },
@@ -13,6 +19,24 @@ class App extends React.Component {
     somethingElse: `I'm still here!`,
     showPersonsList: false
   };
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('App.js: getDerivedStateFromProps', props);
+    return state;
+  }
+
+  componentDidMount() {
+    console.log('App.js: componentDidMount');
+  }
+  
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('App.js: shouldComponentUpdate');
+    return true;
+  }
+  
+  componentDidUpdate() {
+    console.log('App.js: componentDidUpdate');
+  }
 
   nameChangedHandler = (e, id) => {
     const personIndex = this.state.persons.findIndex(p => p.id === id);
@@ -46,52 +70,27 @@ class App extends React.Component {
   personListFunction = () => {
     if (this.state.showPersonsList) {
       return (
-        <div className="personList">
-          {this.state.persons.map((person, index) => {
-            return (
-              <ErrorBoundary key={person.id}>
-                <Person 
-                  click={() => this.deletePersonHandler(index)} 
-                  name={person.name} 
-                  age={person.age} 
-                  changed={(e) => this.nameChangedHandler(e, person.id)}>
-                </Person>
-              </ErrorBoundary>
-            );
-          })}
-        </div>
+        <Persons 
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangedHandler} />
       );
     }
   };
 
-  render() {
-    
-    let assignedClasses = [];
-    let buttonClass = '';
-
-    if (this.state.persons.length <= 2) {
-      assignedClasses.push( classes.red );
-    }
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push( classes.uppercase );
-    }
-    if (this.state.showPersonsList) {
-      buttonClass = classes.red;
-    }
-    
-    const random = Math.random();
-
-    if (random > 0.7) {
-      throw new Error('Something went wrong');
-    }
-
+  render() {    
+    // const random = Math.random();
+    // if (random > 0.7) {
+    //   throw new Error('Something went wrong');
+    // }
+    console.log('App.js: Render');
     return (
       <div className={classes.App}>
-        <h1 className={assignedClasses.join( ' ' )}>I'm Reactive!</h1>
-        <button className={buttonClass}
-          onClick={this.togglePersonsHandler}>
-          Toggle persons
-        </button>
+        <Cockpit
+          title={this.props.appTitle}
+          showPersonsList={this.state.showPersonsList} 
+          persons={this.state.persons}
+          clicked={this.togglePersonsHandler} />
         {this.personListFunction()}
       </div>
     );
