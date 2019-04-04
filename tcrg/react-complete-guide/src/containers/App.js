@@ -17,7 +17,8 @@ class App extends React.Component {
       { id: 2, name: 'Kinztachi', age: 4 }
     ],
     somethingElse: `I'm still here!`,
-    showPersonsList: false
+    showPersonsList: false,
+    showCockpit: true
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -64,7 +65,7 @@ class App extends React.Component {
   togglePersonsHandler = () => {
     const currentState = this.state.showPersonsList;
     this.setState({ showPersonsList: !currentState });
-    console.log('Hidden:', this.state.showPersonsList);
+    console.log('Persons hidden:', this.state.showPersonsList);
   };
 
   personListFunction = () => {
@@ -78,6 +79,29 @@ class App extends React.Component {
     }
   };
 
+  cockpitToggle = () => {
+    const currentState = this.state.showCockpit;
+    this.setState({ showCockpit: !currentState });
+    console.log('Cockpit hidden:', this.state.showCockpit);
+  };
+
+  cockpitContainer = () => {
+    if (this.state.showCockpit) {
+      return (
+        <div>
+          <Cockpit
+            title={this.props.appTitle}
+            showPersonsList={this.state.showPersonsList} 
+            persons={this.state.persons}
+            clicked={this.togglePersonsHandler} />
+          {this.personListFunction()}
+        </div>
+      )
+    } else {
+      return null;
+    }
+  }
+
   render() {    
     // const random = Math.random();
     // if (random > 0.7) {
@@ -86,12 +110,8 @@ class App extends React.Component {
     console.log('App.js: Render');
     return (
       <div className={classes.App}>
-        <Cockpit
-          title={this.props.appTitle}
-          showPersonsList={this.state.showPersonsList} 
-          persons={this.state.persons}
-          clicked={this.togglePersonsHandler} />
-        {this.personListFunction()}
+        <button onClick={() => this.cockpitToggle()}>Toggle cockpit</button>
+        {this.cockpitContainer()}
       </div>
     );
   }

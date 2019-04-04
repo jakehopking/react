@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Cockpit.css';
 
 const cockpit = (props) => {
+  useEffect(() => {
+    console.log('Cockpit.js: useEffect');
+
+    const timer = setTimeout(() => {
+      console.log('!!!ALERT!!!');
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+      console.log('Cockpit.js: useEffect clean up');
+    }
+  }, [props.persons]); // If defined state same, don't call useEffect again.
+
   let assignedClasses = [];
   let buttonClass = '';
 
