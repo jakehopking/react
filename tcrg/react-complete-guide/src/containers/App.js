@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import WithClass from '../hoc/WithClass';
 // import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends React.Component {
@@ -92,7 +93,7 @@ class App extends React.Component {
           <Cockpit
             title={this.props.appTitle}
             showPersonsList={this.state.showPersonsList} 
-            persons={this.state.persons}
+            personsLength={this.state.persons.length}
             clicked={this.togglePersonsHandler} />
           {this.personListFunction()}
         </div>
@@ -109,10 +110,10 @@ class App extends React.Component {
     // }
     console.log('App.js: Render');
     return (
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
         <button onClick={() => this.cockpitToggle()}>Toggle cockpit</button>
         {this.cockpitContainer()}
-      </div>
+      </WithClass>
     );
   }
 }

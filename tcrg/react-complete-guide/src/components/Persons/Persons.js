@@ -1,16 +1,22 @@
 import React from 'react';
 import Person from './Person/Person'
 
-class Persons extends React.Component {
+class Persons extends React.PureComponent {
   // static getDerivedStateFromProps(props, state) {
   //   console.log('Persons.js: getDerivedStateFromProps', props);
   //   return state;
   // }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('Persons.js: shouldComponentUpdate', nextProps, nextState);
-    return true;
-  }
+  // OR use { PureComponent } instead of { component }to run checks agains ALL props.
+  // If used then shouldComponentUpdate isn't necessary
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('Persons.js: shouldComponentUpdate', nextProps, nextState);
+  //   if (nextProps.persons !== this.props.persons) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
   getSnapshotBeforeUpdate(nextProps, nextState) {
     console.log('Persons.js: getSnapshotBeforeUpdate', nextProps, nextState);
