@@ -1,6 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './Person.css';
-// import Aux from '../../../hoc/Aux';
+import Aux from '../../../hoc/Aux';
+import withClass from '../../../hoc/WithClass';
 
 // class Person extends React.Component {
 
@@ -11,14 +13,24 @@ import classes from './Person.css';
 class Person extends React.Component {
   render() {
     return (
-      <Fragment>
-        <div className={classes.Person}>
-          <p onClick={this.props.click}>Hello {this.props.name} and I'm {this.props.age} years old! {this.props.children}</p>
-          <input type="text" onChange={this.props.changed} value={this.props.name} />
-        </div>
-      </Fragment>
+      <Aux>
+        <p onClick={this.props.click}>
+          Hello {this.props.name} and I'm {this.props.age} years old! {this.props.children}
+        </p>
+        <input 
+          type="text" 
+          onChange={this.props.changed} 
+          value={this.props.name} />
+      </Aux>
     );
   }
 }
 
-export default Person;
+Person.propTypes = {
+  click: PropTypes.func,
+  name: PropTypes.string,
+  age: PropTypes.number,
+  changed: PropTypes.func
+};
+
+export default withClass(Person, classes.Person);

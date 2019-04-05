@@ -2,7 +2,8 @@ import React from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/WithClass';
+import Aux from '../hoc/Aux';
 // import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends React.Component {
@@ -19,7 +20,8 @@ class App extends React.Component {
     ],
     somethingElse: `I'm still here!`,
     showPersonsList: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -53,7 +55,13 @@ class App extends React.Component {
     const persons = [...this.state.persons];
     persons[personIndex] = selectedPerson;
 
-    this.setState({ persons: persons });
+    // When updating state which depends on old state, this pattern with prevState is really important
+    this.setState((prevState, props) => { 
+      return {
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1
+      }
+    });
   };
 
   deletePersonHandler = (personIndex) => {
@@ -110,12 +118,12 @@ class App extends React.Component {
     // }
     console.log('App.js: Render');
     return (
-      <WithClass classes={classes.App}>
+      <Aux>
         <button onClick={() => this.cockpitToggle()}>Toggle cockpit</button>
         {this.cockpitContainer()}
-      </WithClass>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
