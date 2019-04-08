@@ -41,8 +41,8 @@ class Persons extends React.PureComponent {
           name={person.name} 
           age={person.age} 
           key={person.id}
-          changed={(e) => this.props.changed(e, person.id)}>
-        </Person>
+          changed={(e) => this.props.changed(e, person.id)}
+          />
       );
     });
   }

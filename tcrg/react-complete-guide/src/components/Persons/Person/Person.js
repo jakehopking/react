@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classes from './Person.css';
 import Aux from '../../../hoc/Aux';
 import withClass from '../../../hoc/WithClass';
+import AuthContext from '../../../context/auth-context';
 
 // class Person extends React.Component {
 
@@ -24,6 +25,9 @@ class Person extends React.Component {
   render() {
     return (
       <Aux>
+        <AuthContext.Consumer>
+          {(context) => context.authenticated ? <p>Authenticated!</p> : <p>Not Authenticated!</p>}
+        </AuthContext.Consumer>
         <p onClick={this.props.click}>
           Hello {this.props.name} and I'm {this.props.age} years old! {this.props.children}
         </p>
@@ -32,7 +36,8 @@ class Person extends React.Component {
           // ref={(inputEl) => {this.inputTarget = inputEl}}
           ref={this.inputTarget}
           onChange={this.props.changed} 
-          value={this.props.name} />
+          value={this.props.name} 
+          />
       </Aux>
     );
   }
