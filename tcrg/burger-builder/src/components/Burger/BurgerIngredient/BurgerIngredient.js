@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import styles from './BurgerIngredient.css';
+import styles from './BurgerIngredient.scss';
 
 class BurgerIngredient extends Component {
   // constructor(props) {
@@ -41,10 +41,10 @@ class BurgerIngredient extends Component {
 
     return ingredient;
   }
-};
-
-BurgerIngredient.PropTypes = {
-  type: PropTypes.string.isRequired
 }
+// LOWER CASE P on first!!!
+BurgerIngredient.propTypes = {
+  type: PropTypes.string.isRequired
+};
 
 export default BurgerIngredient;
