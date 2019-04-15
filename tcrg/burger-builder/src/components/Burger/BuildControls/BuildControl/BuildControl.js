@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './BuildControl.scss';
 
 const buildControl = (props) => {
+  console.log(props.disabled);
+  
   return (
     <div className={styles.BuildControl}>
       <div className={styles.Label}>{props.label}</div>
@@ -11,7 +13,9 @@ const buildControl = (props) => {
           More
         </button>
       <button 
-        className={styles.More}>
+        disabled={props.disabled}
+        className={styles.More}
+        onClick={props.ingredientRemoved}>
         Less
       </button>
     </div>
