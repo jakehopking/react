@@ -26,10 +26,7 @@ class BurgerBuilder extends Component {
 
   canOrder (ingredients) {
     let sum = null;
-    const arr = Object.keys(ingredients).map((igKey) => {
-      console.log(ingredients[igKey]);
-      sum += ingredients[igKey];
-    });
+    Object.keys(ingredients).map((igKey) => sum += ingredients[igKey]);
     // Cound use .reduce((arr, el) => {return arr + el}, 0);
     // https://www.udemy.com/react-the-complete-guide-incl-redux/learn/v4/t/lecture/8109036?start=0
     console.log(sum);
