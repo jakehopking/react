@@ -10,8 +10,8 @@ class Layout extends React.Component {
   }
 
   sideDrawToggleHandler = () => {
-    console.log('Backdrop show: ', this.state.showSideDrawer);
-    this.setState({showSideDrawer: false});
+    this.setState({showSideDrawer: !this.state.showSideDrawer});
+    console.log('Backdrop show: ', !this.state.showSideDrawer);
   }
   
   render() {
