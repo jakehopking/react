@@ -3,16 +3,28 @@ import classes from './Layout.scss';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer'; 
 
-const layout = (props) => {
-  return (
-  <Fragment>
-    <Toolbar />
-    <SideDrawer />
-    <main className={classes.Content}>
-      { props.children }
-    </main>
-  </Fragment>
-  )
+class Layout extends React.Component {
+
+  state = {
+    showSideDrawer: true
+  }
+
+  sideDrawToggleHandler = () => {
+    console.log('Backdrop show: ', this.state.showSideDrawer);
+    this.setState({showSideDrawer: false});
+  }
+  
+  render() {
+    return (
+    <Fragment>
+      <Toolbar />
+      <SideDrawer open={this.state.showSideDrawer} closed={this.sideDrawToggleHandler} />
+      <main className={classes.Content}>
+        { this.props.children }
+      </main>
+    </Fragment>
+    )
+  }
 };
 
-export default layout;
+export default Layout;

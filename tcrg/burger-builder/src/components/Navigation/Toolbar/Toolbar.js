@@ -6,11 +6,13 @@ import NavItems from '../NavItems/NavItems';
 const toolbar = (props) => {
   return (
     <header className={styles.Toolbar}>
-      <div>Menu</div>
-      <Logo />
-      <nav>
-        <NavItems />
-      </nav>
+      <div className={[styles.Toolbar, styles.hideMeMobile].join(' ')}>
+        <div>Menu</div>
+        <Logo />
+        <nav>
+          <NavItems />
+        </nav>
+      </div>
     </header>
   )
 }

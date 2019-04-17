@@ -14,3 +14,12 @@
     height: 100%;
   }
 }
+
+.hideMeMobile {
+  @media (max-width: 499px) {
+    display: none;
+  }
+  // @media (min-width: 500px) {
+  //   display: block;
+  // }
+}
