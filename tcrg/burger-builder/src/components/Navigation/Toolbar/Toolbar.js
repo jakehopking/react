@@ -2,17 +2,17 @@ import React from 'react';
 import styles from './Toolbar.scss';
 import Logo from '../../Logo/Logo';
 import NavItems from '../NavItems/NavItems';
+import ToggleMenu from '../../Navigation/SideDrawer/ToggleMenu/ToggleMenu';
 
 const toolbar = (props) => {
   return (
     <header className={styles.Toolbar}>
-      <div className={[styles.Toolbar, styles.hideMeMobile].join(' ')}>
-        <div>Menu</div>
-        <Logo />
-        <nav>
+        <ToggleMenu 
+          toggle={props.toggle}
+          className={styles.hideMeMobile} />
+        <nav className={styles.hideMeMobile}>
           <NavItems />
         </nav>
-      </div>
     </header>
   )
 }
