@@ -9,7 +9,11 @@ const toolbar = (props) => {
     <header className={styles.Toolbar}>
         <ToggleMenu 
           toggle={props.toggle}
-          className={styles.hideMeMobile} />
+          className={styles.hideMeMobile} 
+        />
+        <Logo 
+          className={styles.hideMeMobile} 
+        />
         <nav className={styles.hideMeMobile}>
           <NavItems />
         </nav>
