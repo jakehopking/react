@@ -6,7 +6,7 @@ import NavItems from '../../Navigation/NavItems/NavItems';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import ToggleMenu from './ToggleMenu/ToggleMenu';
 
-const sideDrawer = (props) => {
+const sideDrawer = props => {
   let sideDrawStyles = [styles.SideDrawer, styles.Close];
   if (props.open) {
     sideDrawStyles = [styles.SideDrawer, styles.Open];
@@ -15,17 +15,14 @@ const sideDrawer = (props) => {
     <Fragment>
       <Backdrop show={props.open} hide={props.closed} />
       <div className={sideDrawStyles.join(' ')}>
-        <ToggleMenu 
-          toggle={props.toggle}
-          className={styles.hideMeMobile}>
-        </ToggleMenu>
+        <ToggleMenu toggle={props.toggle} className={styles.hideMeMobile} />
         <Logo />
         <nav>
           <NavItems />
         </nav>
       </div>
     </Fragment>
-  )
-}
+  );
+};
 
 export default sideDrawer;

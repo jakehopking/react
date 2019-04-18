@@ -1,41 +1,41 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './BurgerIngredient.scss';
 
 class BurgerIngredient extends Component {
   // constructor(props) {
   //   super(props)
-    
+
   // }
 
   render() {
     let ingredient = null;
 
-    switch ( this.props.type ) {
-      case ('bread-bottom'):
-        ingredient = <div className={styles.BreadBottom}></div>;
+    switch (this.props.type) {
+      case 'bread-bottom':
+        ingredient = <div className={styles.BreadBottom} />;
         break;
-      case ('bread-top'):
+      case 'bread-top':
         ingredient = (
           <div className={styles.BreadTop}>
-            <div className={styles.Seeds1}></div>
-            <div className={styles.Seeds2}></div>
+            <div className={styles.Seeds1} />
+            <div className={styles.Seeds2} />
           </div>
-        )
+        );
         break;
-      case ('meat'):
-        ingredient = <div className={styles.Meat}></div>;
+      case 'meat':
+        ingredient = <div className={styles.Meat} />;
         break;
-      case ('cheese'):
-        ingredient = <div className={styles.Cheese}></div>;
+      case 'cheese':
+        ingredient = <div className={styles.Cheese} />;
         break;
-      case ('salad'):
-        ingredient = <div className={styles.Salad}></div>;
+      case 'salad':
+        ingredient = <div className={styles.Salad} />;
         break;
-      case ('bacon'):
-        ingredient = <div className={styles.Bacon}></div>;
+      case 'bacon':
+        ingredient = <div className={styles.Bacon} />;
         break;
-      default: 
+      default:
         ingredient = null;
     }
 
@@ -44,7 +44,7 @@ class BurgerIngredient extends Component {
 }
 // LOWER CASE P on first!!!
 BurgerIngredient.propTypes = {
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
 };
 
 export default BurgerIngredient;

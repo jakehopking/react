@@ -39,6 +39,7 @@
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.5.0",
     "postcss-safe-parser": "4.0.1",
+    "prettier": "^1.17.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-app-polyfill": "^0.2.2",
@@ -57,7 +58,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "prettier:run": "prettier --config 'prettier.config.js' --write 'src/**/*.js'",
+    "prettier:check": "prettier --config 'prettier.config.js' --check 'src/**/*.js'"
   },
   "eslintConfig": {
     "extends": "react-app"
