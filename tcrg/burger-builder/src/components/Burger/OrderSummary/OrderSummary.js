@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import Button from '../../UI/Button/Button';
 
 class OrderSummary extends React.Component {
+
+  // Doesn't need to be a class for performance reasons. Could be a functional one.
   componentDidUpdate() {
     console.log('Order Summary');
   }
