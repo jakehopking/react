@@ -23,7 +23,7 @@ class Blog extends Component {
                   textDecoration: 'line-through'
                 }}
                 exact>
-                  Home</NavLink>
+                  Posts</NavLink>
             </li>
             <li>
               <NavLink to={{
