@@ -10,3 +10,12 @@
   display: inline-block;
   margin: 20px;
 }
+
+.Blog a {
+  color: black;
+}
+
+.Blog a.active,
+.Blog a.active--home {
+  color: crimson;
+}
