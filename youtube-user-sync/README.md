@@ -1,24 +1,28 @@
-# YT-API
-This is a simple web application that allow mutiple clients to watch the same (synchronized) Youtube's videos and chat in the same time
+# Youtube sync video app
 
-# Technology used
-- YouTube Player API 
+This basic app allow multiple users to watch Youtube videos in sync, and share comments in a chat window.
+
+# Tech
+
+- The Youtube API
 - React
-- Nodejs
-- Websockets (ws library)
+- Node.js
+- Websockets
 
-# How it should work
-One user (controller) have the ablity to Pause/Play/Skip the video and these actions effect other users in the same room. The controller can give this contol to others by clicking on their names on the online-users list 
+# Functionality
 
-# How to run it
-First start the nodejs application, with npm installed run
+One user (controller) can control the videos being watched. Controller can pass on control to new user (losing their own control in the process)
+
+# Build/run
+
+First run backend and then frontent
+
 ```
 $ cd backend/ && npm start
 ```
+
 Then start react application
+
 ```
 $ cd frontend/ && npm start
 ```
-
-# Contributing
-Feel free to fix, suggest new features, clean some code or make the ugly frontend design prettier!
