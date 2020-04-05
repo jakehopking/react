@@ -15,7 +15,7 @@ One user (controller) can control the videos being watched. Controller can pass 
 
 # Build/run
 
-First run backend and then frontent
+First run backend, then front
 
 ```
 $ cd backend/ && npm start
