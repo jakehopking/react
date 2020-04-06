@@ -1,10 +1,14 @@
-import React, {useEffect, Fragment} from "react";
-import PropTypes from "prop-types";
+import React, {useEffect, Fragment, useContext} from "react";
+import GithubContext from "../../context/github/githubContext";
 import Spinner from "../Spinner";
 import {Link} from "react-router-dom";
 import Repos from "../repos/Repos";
 
-const User = ({user, loading, repos, match, getUserRepos, getUser}) => {
+const User = ({match}) => {
+  const githubContext = useContext(GithubContext);
+
+  const {getUser, user, loading, getUserRepos, repos} = githubContext;
+
   useEffect(() => {
     getUser(match.params.login);
     getUserRepos(match.params.login);
@@ -56,7 +60,12 @@ const User = ({user, loading, repos, match, getUserRepos, getUser}) => {
             <Fragment>
               <h3>Bio</h3>
               <p>{bio}</p>
-              <a className="btn btn-dark" target="_blank" href={html_url}>
+              <a
+                className="btn btn-dark"
+                target="_blank"
+                rel="noopener noreferrer"
+                href={html_url}
+              >
                 Go to Github Profile
               </a>
               <ul>
@@ -78,7 +87,11 @@ const User = ({user, loading, repos, match, getUserRepos, getUser}) => {
                   {blog && (
                     <Fragment>
                       <strong>Website: </strong>{" "}
-                      <a href={`http://${blog}`} target="_blank">
+                      <a
+                        href={`http://${blog}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {blog}
                       </a>
                     </Fragment>
@@ -98,14 +111,6 @@ const User = ({user, loading, repos, match, getUserRepos, getUser}) => {
       <Repos repos={repos} />
     </Fragment>
   );
-};
-
-User.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  user: PropTypes.object.isRequired,
-  repos: PropTypes.array.isRequired,
-  getUser: PropTypes.func.isRequired,
-  getUserRepos: PropTypes.func.isRequired,
 };
 
 export default User;
