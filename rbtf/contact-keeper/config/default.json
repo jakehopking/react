@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://app_jakehopking:ZGUGSeSyAh6GAZTY@reactcontacts-pk1or.mongodb.net/test?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://app_jakehopking:ZGUGSeSyAh6GAZTY@reactcontacts-pk1or.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "theSecretSauce!!@@@H3r3"
 }
