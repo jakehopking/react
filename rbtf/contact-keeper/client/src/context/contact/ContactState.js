@@ -1,4 +1,5 @@
 import React, {useReducer} from "react";
+import axios from "axios";
 import {v4 as uuid} from "uuid";
 import ContactContext from "./contactContext";
 import contactReducer from "./contactReducer";
@@ -11,55 +12,35 @@ import {
   CLEAR_CURRENT,
   FILTER_CONTACTS,
   CLEAR_FILTER,
+  CONTACT_ERROR,
 } from "../types";
 
 const ContactState = (props) => {
   const initialState = {
-    contacts: [
-      {
-        type: "personal",
-        id: "5e8d9953a9a4a059beb34557",
-        name: "Kingsley Hopking",
-        email: "khopking@gmail.com",
-        website: "",
-        phone: "07502130124‬",
-        user: "5e8d899769e36202b9b84813",
-        date: "2020-04-08T09:28:51.097Z",
-        __v: 0,
-      },
-      {
-        type: "professional",
-        id: "5e8d98cca9a4a059beb34556",
-        name: "Milla Violet Hopking-Kajiho",
-        email: "milla@hopking.io",
-        website: "www.millahopking.com",
-        phone: "",
-        user: "5e8d899769e36202b9b84813",
-        date: "2020-04-08T09:26:36.070Z",
-        __v: 0,
-      },
-      {
-        type: "personal",
-        id: "5e8d9844a9a4a059beb34555",
-        name: "Mami Kajiho",
-        email: "mami@mamikajiho.com",
-        website: "www.mamikajiho.com",
-        phone: "07596559028",
-        user: "5e8d899769e36202b9b84813",
-        date: "2020-04-08T09:24:20.168Z",
-        __v: 0,
-      },
-    ],
+    contacts: [],
     current: null,
     filtered: null,
+    error: null,
   };
 
   const [state, dispatch] = useReducer(contactReducer, initialState);
 
   // Add contact
-  const addContact = (contact) => {
-    contact.id = uuid();
-    dispatch({type: ADD_CONTACT, payload: contact});
+  const addContact = async (contact) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post("/api/contacts", contact, config);
+      dispatch({type: ADD_CONTACT, payload: res.data});
+    } catch (error) {
+      dispatch({
+        type: CONTACT_ERROR,
+        payload: error.response.msg,
+      });
+    }
   };
 
   // Update contact
@@ -98,6 +79,7 @@ const ContactState = (props) => {
         contacts: state.contacts,
         current: state.current,
         filtered: state.filtered,
+        error: state.error,
         addContact,
         deleteContact,
         setCurrent,
