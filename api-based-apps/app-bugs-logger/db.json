@@ -12,7 +12,21 @@
       "message": "Broken return key at WS778",
       "attention": true,
       "date": "Thu Apr 14 2020 15:12:14",
-      "technician": "Mill Hopking"
+      "technician": "Milla Hopking"
+    },
+    {
+      "message": "Turned off and on the WS998. Fixed it.",
+      "technician": "Jake Hopking",
+      "attention": false,
+      "date": "2020-04-16T20:36:32.880Z",
+      "id": 3
+    },
+    {
+      "message": "Test",
+      "technician": "Milla Hopking",
+      "attention": false,
+      "date": "2020-04-16T20:36:53.383Z",
+      "id": 4
     }
   ],
   "technicians": [
