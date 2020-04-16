@@ -1,0 +1,35 @@
+{
+  "logs": [
+    {
+      "id": 1,
+      "message": "Someone has spilled coffee on WS332",
+      "attention": false,
+      "date": "Thu Apr 16 2020 15:12:14",
+      "technician": "Jake Hopking"
+    },
+    {
+      "id": 2,
+      "message": "Broken return key at WS778",
+      "attention": true,
+      "date": "Thu Apr 14 2020 15:12:14",
+      "technician": "Mill Hopking"
+    }
+  ],
+  "technicians": [
+    {
+      "id": 1,
+      "firstName": "Jake",
+      "lastName": "Hopking"
+    },
+    {
+      "id": 2,
+      "firstName": "Milla",
+      "lastName": "Hopking"
+    },
+    {
+      "firstName": "Mami",
+      "lastName": "Hopking",
+      "id": 3
+    }
+  ]
+}
