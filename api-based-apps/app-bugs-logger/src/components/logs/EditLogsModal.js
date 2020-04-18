@@ -1,21 +1,44 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
+import {updateLog, clearCurrent} from "../../actions/logActions";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const EditLogsModal = () => {
+const EditLogsModal = ({updateLog, current, clearCurrent}) => {
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(false);
   const [technician, setTechnician] = useState("");
+
+  useEffect(() => {
+    if (current) {
+      setMessage(current.message);
+      setAttention(current.attention);
+      setTechnician(current.technician);
+    }
+  }, [current]);
 
   const onSubmit = () => {
     if (message === "" || technician === "") {
       M.toast({html: "Please enter a message and technician"});
     } else {
-      console.log(message, technician, attention);
+      const updateLogData = {
+        id: current.id,
+        message,
+        technician,
+        attention,
+        date: new Date(),
+      };
+
+      updateLog(updateLogData);
+
+      M.toast({html: "Log updated"});
 
       // Clear fields
       setMessage("");
       setTechnician("");
       setAttention(false);
+
+      clearCurrent();
     }
   };
 
@@ -31,7 +54,7 @@ const EditLogsModal = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
-            <label htmlFor="message" className="active">
+            <label htmlFor="message" className={message ? "active" : ""}>
               Bug message
             </label>
           </div>
@@ -84,4 +107,14 @@ const modalStyle = {
   height: "75%",
 };
 
-export default EditLogsModal;
+EditLogsModal.propTypes = {
+  updateLog: PropTypes.func.isRequired,
+  clearCurrent: PropTypes.func.isRequired,
+  current: PropTypes.object,
+};
+
+const mapStateToProps = (state) => ({
+  current: state.log.current,
+});
+
+export default connect(mapStateToProps, {updateLog, clearCurrent})(EditLogsModal);

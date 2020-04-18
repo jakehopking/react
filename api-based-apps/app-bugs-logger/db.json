@@ -3,30 +3,23 @@
     {
       "id": 1,
       "message": "Someone has spilled coffee on WS332",
-      "attention": false,
-      "date": "Thu Apr 16 2020 15:12:14",
-      "technician": "Jake Hopking"
+      "technician": "Jake Hopking",
+      "attention": true,
+      "date": "2020-04-17T14:46:35.888Z"
     },
     {
       "id": 2,
       "message": "Broken return key at WS778",
+      "technician": "Mami Hopking",
       "attention": true,
-      "date": "Thu Apr 14 2020 15:12:14",
-      "technician": "Milla Hopking"
+      "date": "2020-04-17T14:40:55.441Z"
     },
     {
-      "message": "Turned off and on the WS998. Fixed it.",
-      "technician": "Jake Hopking",
-      "attention": false,
-      "date": "2020-04-16T20:36:32.880Z",
-      "id": 3
-    },
-    {
-      "message": "Test",
+      "id": 3,
+      "message": "Turned off and on the WS998. Fixed it again!",
       "technician": "Milla Hopking",
       "attention": false,
-      "date": "2020-04-16T20:36:53.383Z",
-      "id": 4
+      "date": "2020-04-17T22:27:22.789Z"
     }
   ],
   "technicians": [
