@@ -33,7 +33,7 @@ const Logs = ({log: {logs, loading}, getLogs}) => {
 
 const mapStateToProps = (state) => ({
   log: state.log,
-  // OR and don't need to destructure above...
+  // OR: don't need to destructure above with...
   // logs: state.log.logs,
   // loading: state.log.loading,
 });

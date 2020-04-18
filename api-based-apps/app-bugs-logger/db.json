@@ -10,16 +10,16 @@
     {
       "id": 2,
       "message": "Broken return key at WS778",
-      "technician": "Mami Hopking",
+      "technician": "Milla Hopking",
       "attention": true,
-      "date": "2020-04-17T14:40:55.441Z"
+      "date": "2020-04-18T15:48:40.730Z"
     },
     {
       "id": 3,
       "message": "Turned off and on the WS998. Fixed it again!",
-      "technician": "Milla Hopking",
+      "technician": "Jake Hopking",
       "attention": false,
-      "date": "2020-04-17T22:27:22.789Z"
+      "date": "2020-04-18T16:11:30.548Z"
     }
   ],
   "technicians": [

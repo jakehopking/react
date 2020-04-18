@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import {addLog} from "../../actions/logActions";
 
 import M from "materialize-css/dist/js/materialize.min.js";
+import TechnicianSelectOptions from "../technicians/TechnicianSelectOptions";
 
 const AddLogsModal = ({addLog}) => {
   const [message, setMessage] = useState("");
@@ -59,9 +60,7 @@ const AddLogsModal = ({addLog}) => {
               <option value="" disabled>
                 Select technician
               </option>
-              <option value="Jake Hopking">Jake Hopking</option>
-              <option value="Mami Hopking">Mami Hopking</option>
-              <option value="Milla Hopking">Milla Hopking</option>
+              <TechnicianSelectOptions />
             </select>
           </div>
         </div>
